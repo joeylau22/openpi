@@ -24,7 +24,7 @@ from typing import List, Optional, Dict
 
 import dm_env
 import numpy as np
-import rospy
+# import rospy
 from sensor_msgs.msg import JointState
 from kortex_api.autogen.client import BaseClient  # type: ignore
 from kortex_api.autogen.messages import Base_pb2  # type: ignore
@@ -68,7 +68,7 @@ class RealEnv:
             self._setup_robot()
 
         # Subscribe to joint states so we always have fresh positions/velocities
-        rospy.Subscriber(JOINT_STATE_TOPIC, JointState, self._joint_state_cb, queue_size=1)
+        # rospy.Subscriber(JOINT_STATE_TOPIC, JointState, self._joint_state_cb, queue_size=1)
 
     # --------------------------------------------------------------------- #
     #  Robot setup / low‑level helpers                                       #
@@ -76,7 +76,7 @@ class RealEnv:
     def _setup_robot(self) -> None:
         """Connect to the Kinova base via Kortex API."""
         # These are the defaults from Kinova docs; change if needed.
-        ip = rospy.get_param("~ip_address", "192.168.1.10")
+        # ip = rospy.get_param("~ip_address", "192.168.1.10")
         port = 10000
         credentials = ("admin", "admin")
 

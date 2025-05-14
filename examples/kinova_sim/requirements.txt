@@ -1,0 +1,7 @@
+
+dm_env>=1.6
+numpy>=1.21
+opencv-python-headless>=4.9
+torch>=2.2
+# For optional image rendering/testing:
+matplotlib>=3.8

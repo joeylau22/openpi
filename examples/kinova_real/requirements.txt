@@ -1,0 +1,8 @@
+
+dm_env>=1.6
+numpy>=1.21
+opencv-python-headless>=4.9
+torch>=2.2          # or onnxruntime if you export the PI‑0 model
+# If Kinova's Kortex API is on PyPI for your version:
+kortex_api>=2.3.0
+mujoco==3.1.1       # optional, only if you also use MuJoCo sim

@@ -1,0 +1,27 @@
+
+version: "3.9"
+
+services:
+  kinova_sim:
+    build:
+      context: .
+      dockerfile: kinova_Dockerfile
+    network_mode: host
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    devices:
+      - "/dev/dri"      # GPU acceleration for Gazebo (optional)
+    restart: unless-stopped
+
+  pi0_client:
+    build:
+      context: .
+      dockerfile: kinova_Dockerfile
+    depends_on:
+      - kinova_sim
+    network_mode: host
+    entrypoint: >
+      /bin/bash -c "source /opt/ros/noetic/setup.bash &&
+      python examples/kinova_sim/kinova_sim_main.py"

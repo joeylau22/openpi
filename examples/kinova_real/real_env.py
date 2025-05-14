@@ -29,7 +29,7 @@ from sensor_msgs.msg import JointState
 from kortex_api.autogen.client import BaseClient  # type: ignore
 from kortex_api.autogen.messages import Base_pb2  # type: ignore
 
-from examples.kinova_real import kinova_constants as constants
+from examples.kinova_real import constants as constants
 
 # -----------------------------------------------------------------------------
 # ROS topic / service names – edit to suit your workspace

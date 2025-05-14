@@ -1,7 +1,7 @@
 
 """CLI launcher for Kinova PI‑0 client."""
 import argparse, numpy as np
-from examples.kinova_real import kinova_env as kv_env
+from examples.kinova_real import env as kv_env
 
 def main():
     ap = argparse.ArgumentParser()

@@ -1,7 +1,7 @@
 
 """CLI to test Kinova Gazebo simulation with PI‑0 environment."""
 import numpy as np
-from examples.kinova_sim import kinova_sim_env as ks_env
+from examples.kinova_sim import env as ks_env
 
 def main():
     env = ks_env.SimEnv()

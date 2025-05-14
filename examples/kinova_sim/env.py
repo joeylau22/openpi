@@ -23,7 +23,7 @@ from typing import List, Dict, Optional
 
 import dm_env
 import numpy as np
-import rospy
+#import rospy
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 from sensor_msgs.msg import JointState
 
@@ -40,14 +40,14 @@ class SimEnv(dm_env.Environment):
         self._step_counter = 0
         self._done = False
 
-        rospy.init_node("kinova_sim_env", anonymous=True)
-        self._traj_pub = rospy.Publisher(TRAJ_TOPIC, JointTrajectory, queue_size=1)
-        rospy.Subscriber("/my_gen3/joint_states", JointState, self._js_cb, queue_size=1)
+#        rospy.init_node("kinova_sim_env", anonymous=True)
+#        self._traj_pub = rospy.Publisher(TRAJ_TOPIC, JointTrajectory, queue_size=1)
+#        rospy.Subscriber("/my_gen3/joint_states", JointState, self._js_cb, queue_size=1)
 
         # Wait until first JointState
-        rospy.loginfo("Waiting for /my_gen3/joint_states...")
-        while self._latest_js is None and not rospy.is_shutdown():
-            time.sleep(0.05)
+#        rospy.loginfo("Waiting for /my_gen3/joint_states...")
+#        while self._latest_js is None and not rospy.is_shutdown():
+#            time.sleep(0.05)
 
     # ------------------------------------------------------------------ #
     #  Callbacks                                                         #
@@ -96,7 +96,7 @@ class SimEnv(dm_env.Environment):
         traj.joint_names = constants.JOINT_NAMES
         pt = JointTrajectoryPoint()
         pt.positions = positions
-        pt.time_from_start = rospy.Duration.from_sec(self._dt)
+#        pt.time_from_start = rospy.Duration.from_sec(self._dt)
         traj.points.append(pt)
         self._traj_pub.publish(traj)
 
@@ -106,7 +106,7 @@ class SimEnv(dm_env.Environment):
         grasp_traj.joint_names = ["finger_joint"]
         pt = JointTrajectoryPoint()
         pt.positions = [constants.POS2JOINT(position_m)]
-        pt.time_from_start = rospy.Duration.from_sec(self._dt)
+#        pt.time_from_start = rospy.Duration.from_sec(self._dt)
         grasp_traj.points.append(pt)
         self._traj_pub.publish(grasp_traj)
 
